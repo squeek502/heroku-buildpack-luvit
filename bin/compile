@@ -6,7 +6,7 @@ set -o pipefail
 
 # Append indentation to match Heroku style.
 indent () {
-	sed -u 's/^/ /'
+	sed -u 's/^/       /'
 }
 
 echo "-----> Found package.lua"
@@ -21,12 +21,12 @@ echo "-----> Fetching lit"
 
 mkdir -p $BIN_DIR
 cd $BIN_DIR
-curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
+curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh | indent
 chmod +x $BIN_DIR/lit
 
 echo "-----> Building luvit"
 
-lit make lit://luvit/luvit
+lit make lit://luvit/luvit | indent
 chmod +x $BIN_DIR/luvit
 
 if [ ! -f $BIN_DIR/luvit ]; then
@@ -39,4 +39,4 @@ echo "Luvit built to $BIN_DIR/luvit" | indent
 echo "-----> Installing deps"
 
 cd $BUILD_DIR
-lit install
+lit install | indent
