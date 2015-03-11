@@ -35,3 +35,8 @@ if [ ! -f $BIN_DIR/luvit ]; then
 fi
 
 echo "Luvit built to $BIN_DIR/luvit" | indent
+
+echo "-----> Installing deps"
+
+cd $BUILD_DIR
+lit install
