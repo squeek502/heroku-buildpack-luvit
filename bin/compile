@@ -15,14 +15,14 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 BIN_DIR=$BUILD_DIR/bin
-
-mkdir -p $BIN_DIR
-
-cd $BIN_DIR
+PATH=$BIN_DIR:$PATH
 
 echo "-----> Fetching lit"
 
-curl --silent -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
+mkdir -p $BIN_DIR
+cd $BIN_DIR
+curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
+chmod +x $BIN_DIR/lit
 
 echo "-----> Building luvit"
 
