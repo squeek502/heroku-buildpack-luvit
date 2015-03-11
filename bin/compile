@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# bin/compile <BUILD_DIR> <CACHE_DIR> <ENV_DIR>
+
+set -e
+set -o pipefail
+
+# Append indentation to match Heroku style.
+indent () {
+	sed -u 's/^/ /'
+}
+
+echo "-----> Found package.lua"
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+BIN_DIR=$BUILD_DIR/bin
+
+mkdir -p $BIN_DIR
+
+cd $BIN_DIR
+
+echo "-----> Fetching lit"
+
+curl --silent -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
+
+echo "-----> Building luvit"
+
+lit make lit://luvit/luvit
