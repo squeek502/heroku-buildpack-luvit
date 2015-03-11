@@ -27,3 +27,4 @@ chmod +x $BIN_DIR/lit
 echo "-----> Building luvit"
 
 lit make lit://luvit/luvit
+chmod +x $BIN_DIR/luvit
