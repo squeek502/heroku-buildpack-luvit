@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # detect <BUILD_DIR>
 
-# this pack is valid for apps with a hello.txt in the root
+# this pack is valid for apps with a package.lua in the root
 if [ -f $1/package.lua ]; then
   echo "luvit"
   exit 0

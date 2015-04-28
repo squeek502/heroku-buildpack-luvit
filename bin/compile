@@ -46,16 +46,16 @@ echo "-----> Installing deps"
 cd $BUILD_DIR
 lit install | indent
 
-if [ -f $ENV_DIR/LIT_MAKE ]; then
+if [ -f $BUILD_DIR/main.lua ] && [ ! -f $ENV_DIR/SKIP_MAKE ]; then
 	echo "-----> Running lit make"
 	cd $BUILD_DIR
 	lit make | indent
 else
-	echo "-----> LIT_MAKE env var not found; skipping lit make step"
+	echo "-----> main.lua not found or SKIP_MAKE env var set; skipping lit make step"
 fi
 
 echo "-----> Creating runtime environment"
 
 # Export PATH to the build env using .profile.d
 mkdir -p $BUILD_DIR/.profile.d
-echo "export PATH=\"\$HOME/$BIN_REL_PATH:\$PATH\"" > $BUILD_DIR/.profile.d/luvit.sh
+echo "export PATH=\"\$HOME:\$HOME/$BIN_REL_PATH:\$PATH\"" > $BUILD_DIR/.profile.d/luvit.sh
