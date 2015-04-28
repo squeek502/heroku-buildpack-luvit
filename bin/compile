@@ -24,19 +24,31 @@ cd $BIN_DIR
 curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh | indent
 chmod +x $BIN_DIR/lit
 
-echo "-----> Building luvit"
+if [ ! -f $ENV_DIR/SKIP_LUVIT ]; then
+	echo "-----> Building luvit"
 
-lit make lit://luvit/luvit | indent
-chmod +x $BIN_DIR/luvit
+	lit make lit://luvit/luvit | indent
+	chmod +x $BIN_DIR/luvit
 
-if [ ! -f $BIN_DIR/luvit ]; then
-	echo "Luvit binary not found after build step"
-	exit 1
+	if [ ! -f $BIN_DIR/luvit ]; then
+		echo "Luvit binary not found after build step"
+		exit 1
+	fi
+
+	echo "Luvit built to $BIN_DIR/luvit" | indent
+else
+	echo "-----> SKIP_LUVIT env var found; skipping luvit build step"
 fi
-
-echo "Luvit built to $BIN_DIR/luvit" | indent
 
 echo "-----> Installing deps"
 
 cd $BUILD_DIR
 lit install | indent
+
+if [ -f $ENV_DIR/LIT_MAKE ]; then
+	echo "-----> Running lit make"
+	cd $BUILD_DIR
+	lit make | indent
+else
+	echo "-----> LIT_MAKE env var not found; skipping lit make step"
+fi
