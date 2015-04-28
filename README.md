@@ -13,7 +13,7 @@ To create a new Heroku app using this buildpack:
 heroku create --buildpack https://github.com/squeek502/heroku-buildpack-luvit.git
 ```
 
-All apps using this buildpack must have a `package.lua` in their root directory.
+The buildpack will detect that your app has a `package.lua` in the root.
 
 ### Luvit Apps
 
