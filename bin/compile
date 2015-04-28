@@ -14,7 +14,7 @@ echo "-----> Found package.lua"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-BIN_DIR=$BUILD_DIR/bin
+BIN_DIR=$BUILD_DIR/.luvit/bin
 PATH=$BIN_DIR:$PATH
 
 echo "-----> Fetching lit"
@@ -52,3 +52,9 @@ if [ -f $ENV_DIR/LIT_MAKE ]; then
 else
 	echo "-----> LIT_MAKE env var not found; skipping lit make step"
 fi
+
+echo "-----> Creating runtime environment"
+
+# Export PATH to the build env using .profile.d
+mkdir -p $BUILD_DIR/.profile.d
+echo "export PATH=\"$BIN_DIR:\$PATH\"" > $BUILD_DIR/.profile.d/luvit.sh
