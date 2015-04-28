@@ -42,7 +42,7 @@ Truncated example output from a `git push`:
        ...
        done: success
 
------> Skipping lit make step: main.lua not found or SKIP_MAKE env var set
+-----> Skipping lit make step (main.lua not found or SKIP_MAKE config var set)
 -----> Creating runtime environment
 -----> Discovering process types
        Procfile declares types -> web
@@ -70,12 +70,12 @@ Truncated output from a `git push`:
        done building: lit
        done: success
 
------> SKIP_LUVIT env var found; skipping luvit build step
+-----> Skipping luvit build step (SKIP_LUVIT config var set)
 -----> Installing deps
        ...
        done: success
 
------> Running lit make: main.lua found and SKIP_MAKE env var not set
+-----> Running lit make (main.lua found and SKIP_MAKE config var not set)
        ...
        done building: lit-example
        done: success
