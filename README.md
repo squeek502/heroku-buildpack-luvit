@@ -1,7 +1,7 @@
 Heroku Buildpack for Luvit 2.0
 ==============================
 
-A Heroku buildpack for [Luvit 2.0](https://luvit.io) and/or [Lit/Luvi](https://github.com/luvit/lit/#execution-and-packaging) apps.
+A Heroku buildpack for [Luvit 2.0](https://luvit.io) and/or [Lit](https://github.com/luvit/lit/#execution-and-packaging) apps.
 
 This buildpack requires that you use the [Cedar-14](https://devcenter.heroku.com/articles/cedar-14-migration) stack for your Heroku application.
 
@@ -54,7 +54,7 @@ Truncated example output from a `git push`:
 
 Note: If your app contains a main.lua and you don't want to run `lit make`, set the config var `SKIP_MAKE` (see [Options](#options))
 
-### Lit/Luvi Apps
+### Lit Apps
 
 If a main.lua file is found in the root, then `lit make` will be executed automatically.
 
