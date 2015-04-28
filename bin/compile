@@ -37,6 +37,7 @@ if [ ! -f $ENV_DIR/SKIP_LUVIT ]; then
 	fi
 
 	echo "Luvit built to $BIN_REL_PATH/luvit" | indent
+	echo ""
 else
 	echo "-----> SKIP_LUVIT env var found; skipping luvit build step"
 fi
@@ -47,11 +48,11 @@ cd $BUILD_DIR
 lit install | indent
 
 if [ -f $BUILD_DIR/main.lua ] && [ ! -f $ENV_DIR/SKIP_MAKE ]; then
-	echo "-----> Running lit make"
+	echo "-----> Running lit make: main.lua found and SKIP_MAKE env var not set"
 	cd $BUILD_DIR
 	lit make | indent
 else
-	echo "-----> main.lua not found or SKIP_MAKE env var set; skipping lit make step"
+	echo "-----> Skipping lit make step: main.lua not found or SKIP_MAKE env var set"
 fi
 
 echo "-----> Creating runtime environment"
