@@ -3,8 +3,6 @@ Heroku Buildpack for Luvit 2.0
 
 A Heroku buildpack for [Luvit 2.0](https://luvit.io) and/or [Lit](https://github.com/luvit/lit/#execution-and-packaging) apps.
 
-This buildpack requires that you use the [Cedar-14](https://devcenter.heroku.com/articles/cedar-14-migration) stack for your Heroku application.
-
 ## Usage
 
 To create a new Heroku app using this buildpack:
