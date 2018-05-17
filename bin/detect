@@ -6,5 +6,6 @@ if [ -f $1/package.lua ]; then
   echo "luvit"
   exit 0
 else
+  >&2 echo 'Luvit: package.lua not found in application root'
   exit 1
 fi
