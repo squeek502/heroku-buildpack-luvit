@@ -24,13 +24,13 @@ mkdir -p $BIN_DIR
 cd $BIN_DIR
 curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh | indent
 chmod +x $BIN_DIR/lit
-chmod +x $BIN_DIR/luvit
 
 if [ ! -f $BIN_DIR/luvit ]; then
 	echo "Luvit binary not found after build step"
 	exit 1
 fi
 echo "Luvit built to $BIN_REL_PATH/luvit" | indent
+chmod +x $BIN_DIR/luvit
 
 echo "-----> Installing deps"
 
