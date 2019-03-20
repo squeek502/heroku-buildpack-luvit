@@ -18,29 +18,19 @@ BIN_REL_PATH=.luvit/bin
 BIN_DIR=$BUILD_DIR/$BIN_REL_PATH
 PATH=$BIN_DIR:$PATH
 
-echo "-----> Fetching lit"
+echo "-----> Fetching lit and building luvit"
 
 mkdir -p $BIN_DIR
 cd $BIN_DIR
 curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh | indent
 chmod +x $BIN_DIR/lit
+chmod +x $BIN_DIR/luvit
 
-if [ ! -f $ENV_DIR/SKIP_LUVIT ]; then
-	echo "-----> Building luvit"
-
-	lit make lit://luvit/luvit | indent
-	chmod +x $BIN_DIR/luvit
-
-	if [ ! -f $BIN_DIR/luvit ]; then
-		echo "Luvit binary not found after build step"
-		exit 1
-	fi
-
-	echo "Luvit built to $BIN_REL_PATH/luvit" | indent
-	echo ""
-else
-	echo "-----> Skipping luvit build step (SKIP_LUVIT config var set)"
+if [ ! -f $BIN_DIR/luvit ]; then
+	echo "Luvit binary not found after build step"
+	exit 1
 fi
+echo "Luvit built to $BIN_REL_PATH/luvit" | indent
 
 echo "-----> Installing deps"
 

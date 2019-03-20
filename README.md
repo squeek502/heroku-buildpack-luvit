@@ -24,12 +24,10 @@ Truncated example output from a `git push`:
 -----> Fetching custom git buildpack... done
 -----> luvit app detected
 -----> Found package.lua
------> Fetching lit
+-----> Fetching lit and building luvit
        ...
        done building: lit
        done: success
-
------> Building luvit
        ...
        done building: luvit
        done: success
@@ -63,12 +61,16 @@ Truncated output from a `git push`:
 -----> Fetching custom git buildpack... done
 -----> luvit app detected
 -----> Found package.lua
------> Fetching lit
+-----> Fetching lit and building luvit
        ...
        done building: lit
        done: success
+       ...
+       done building: luvit
+       done: success
 
------> Skipping luvit build step (SKIP_LUVIT config var set)
+       Luvit built to .luvit/bin/luvit
+
 -----> Installing deps
        ...
        done: success
@@ -87,16 +89,9 @@ Truncated output from a `git push`:
        https://luvit-buildpack-lit-app.herokuapp.com/ deployed to Heroku
 ```
 
-Note: To stop Luvit from being built (usually an unnecessary step when using `lit make`), set the config var `SKIP_LUVIT` (see [Options](#options)).
-
 ## Options
 
 To stop `lit make` from being executed:
 ```
 heroku config:set SKIP_MAKE=
-```
-
-To stop Luvit from being built:
-```
-heroku config:set SKIP_LUVIT=
 ```
