@@ -95,3 +95,13 @@ To stop `lit make` from being executed:
 ```
 heroku config:set SKIP_MAKE=
 ```
+
+To specify the `luvi` version to use:
+```
+heroku config:set LUVI_VERSION=2.7.6
+```
+
+To specify the `lit` version to use:
+```
+heroku config:set LIT_VERSION=3.5.4
+```

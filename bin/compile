@@ -22,7 +22,7 @@ echo "-----> Fetching lit and building luvit"
 
 mkdir -p $BIN_DIR
 cd $BIN_DIR
-curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh | indent
+curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | LUVI_VERSION=$LUVI_VERSION LIT_VERSION=$LIT_VERSION sh | indent
 chmod +x $BIN_DIR/lit
 
 if [ ! -f $BIN_DIR/luvit ]; then
