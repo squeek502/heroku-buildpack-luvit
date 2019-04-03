@@ -17,6 +17,12 @@ ENV_DIR=$3
 BIN_REL_PATH=.luvit/bin
 BIN_DIR=$BUILD_DIR/$BIN_REL_PATH
 PATH=$BIN_DIR:$PATH
+if [ -f $ENV_DIR/LUVI_VERSION ]; then
+	LUVI_VERSION=$(cat $ENV_DIR/LUVI_VERSION)
+fi
+if [ -f $ENV_DIR/LIT_VERSION ]; then
+	LIT_VERSION=$(cat $ENV_DIR/LIT_VERSION)
+fi
 
 echo "-----> Fetching lit and building luvit"
 
